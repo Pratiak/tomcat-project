@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Prati20/tomcat-project.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Pratiak/tomcat-project.git'
             }
         }
 
