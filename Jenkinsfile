@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Pratiak/tomcat-project.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Pratiak/maven-web-app.git'
             }
         }
 
@@ -22,7 +22,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'sudo cp /home/ubuntu/tomcat-project/target/TomcatMavenApp-2.0.war /opt/tomcat/apache-tomcat-9.0.68/webapps/' 
+                sh 'sudo  cp /home/ubuntu/maven-web-app/target/maven-web-app.war /opt/tomcat/apache-tomcat-9.0.68/webapps' 
 
             }
         }
