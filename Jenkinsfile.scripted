@@ -1,0 +1,19 @@
+node {
+    
+    stage('git clone') {
+        git credentialsId: 'b88fc98c-3ef0-4d47-a445-4cce9fbd718d', url: 'https://github.com/Pratiak/maven-web-app.git'
+  }
+    
+
+    stage('Build') {
+        sh 'mvn clean package'
+    }
+
+    stage('Push') {
+        echo 'This is Push Stage'
+    }
+
+    stage('Deploy') {
+        sh 'sudo cp /home/ubuntu/maven-web-app/target/maven-web-app.war /opt/tomcat/apache-tomcat-9.0.68/webapps'
+    }
+}
