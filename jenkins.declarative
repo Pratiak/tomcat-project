@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Prati20/tomcat-project.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Push') {
+            steps {
+                echo 'This is Push Stage'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'sudo cp /home/ubuntu/git/tomcat-project/target/TomcatMavenApp-2.0.war /home/ubuntu/apache-tomcat-9.0.83/webapps'
+            }
+        }
+
+    }
+
+}
